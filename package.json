@@ -1,17 +1,17 @@
 {
-  "name": "framework-arduinoststm8",
-  "version": "development",
-  "description": "An Arduino-like programming API for the STM8 microcontrollers",
-  "keywords": [
-    "framework",
-    "arduino",
-    "stmicroelectronics",
-    "stm8"
-  ],
-  "homepage": "https://tenbaht.github.io/sduino/",
-  "license": "LGPL-2.1-or-later",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/Zelberor/sduino"
-  }
+	"name": "framework-sduino-ststm8-c-splitter",
+	"version": "development",
+	"description": "An Arduino-like programming API for the STM8 microcontrollers",
+	"keywords": [
+		"framework",
+		"arduino",
+		"stmicroelectronics",
+		"stm8"
+	],
+	"homepage": "https://tenbaht.github.io/sduino/",
+	"license": "LGPL-2.1-or-later",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/Zelberor/framework-sduino-ststm8-c-splitter"
+	}
 }
