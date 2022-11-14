@@ -122,10 +122,27 @@ extern ring_buffer tx_buffer; // = { { 0 }, 0, 0};
 extern volatile char transmitting; //=0;
 extern unsigned char initialized;  //=0 internal status. Returned on HardwareSerial()
 
-// private function declarations //////////////////////////////////////////////////////////////
-static void store_char(unsigned char c, ring_buffer *buffer);
-
 // <--#SPLIT#--> //
+
+/**
+ * This part until the next SPLIT contains the bare minimum of serial support functions
+ *
+ * The interrupt functions (and the supporting basic data structures) can't
+ * be removed by the linker, even if no serial functions are used in the sketch.
+ *
+ * Add a "-DNO_SERIAL" to the CPPFLAGS or CFLAGS to full remove this code.
+ */
+
+#ifdef NO_SERIAL
+/*
+ * empty default IRQ functions to make the linker happy if the
+ * respective module is not to linked.
+ */
+
+void UARTx_RX_IRQHandler(void) __interrupt(ITC_IRQ_UARTx_RX) {}
+void UARTx_TX_IRQHandler(void) __interrupt(ITC_IRQ_UARTx_TX) {}
+
+#else // ifdef NO_SERIAL
 
 // private data //////////////////////////////////////////////////////////////
 
@@ -133,15 +150,10 @@ static void store_char(unsigned char c, ring_buffer *buffer);
 // splitting the source code into smaller units.
 
 ring_buffer rx_buffer; // = { { 0 }, 0, 0};
-// <--#SPLIT#--> //
 ring_buffer tx_buffer; // = { { 0 }, 0, 0};
-// <--#SPLIT#--> //
 
 volatile char transmitting; //=0;
-// <--#SPLIT#--> //
 unsigned char initialized;	//=0 internal status. Returned on HardwareSerial()
-
-// <--#SPLIT#--> //
 
 // private functions  ////////////////////////////////////////////////////////
 
@@ -161,8 +173,6 @@ static void store_char(unsigned char c, ring_buffer *buffer)
 		runSerialEvent = 1;
 	}
 }
-
-// <--#SPLIT#--> //
 
 // Interrupt handler ///////////////////////////////////////////////////////////
 
@@ -220,6 +230,7 @@ void UARTx_TX_IRQHandler(void) __interrupt(ITC_IRQ_UARTx_TX) /* UART1/2 TX */
 	}
 #endif
 }
+#endif // ifdef NO_SERIAL
 
 // <--#SPLIT#--> //
 

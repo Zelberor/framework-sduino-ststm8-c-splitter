@@ -19,6 +19,9 @@
 
 #include <Arduino.h>
 
+// make sure to define prototypes for all used interrupts
+#include "stm8s_it.h"
+
 unsigned char runSerialEvent;
 
 int main(void)
