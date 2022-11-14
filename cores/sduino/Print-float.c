@@ -10,16 +10,16 @@
  modify it under the terms of the GNU Lesser General Public
  License as published by the Free Software Foundation; either
  version 2.1 of the License, or (at your option) any later version.
- 
+
  This library is distributed in the hope that it will be useful,
  but WITHOUT ANY WARRANTY; without even the implied warranty of
  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  Lesser General Public License for more details.
- 
+
  You should have received a copy of the GNU Lesser General Public
  License along with this library; if not, write to the Free Software
  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
- 
+
  Modified 23 November 2006 by David A. Mellis
  Modified 03 August 2015 by Chuck Todd
  Modified 30 December 2016 by Michael Mayer
@@ -47,9 +47,10 @@
 
 // Public Methods //////////////////////////////////////////////////////////////
 
+// <--#SPLIT#--> //
 
 size_t Print_print_fd(writefunc_p writefunc, double number, uint8_t digits)
-{ 
+{
   size_t n = 0;
   uint8_t i;
   unsigned long int_part;
@@ -82,7 +83,7 @@ size_t Print_print_fd(writefunc_p writefunc, double number, uint8_t digits)
 
   // Print the decimal point, but only if there are digits beyond
   if (digits > 0) {
-    n += writefunc('.'); 
+    n += writefunc('.');
   }
 
   // Extract digits from the remainder one at a time
@@ -91,12 +92,13 @@ size_t Print_print_fd(writefunc_p writefunc, double number, uint8_t digits)
     remainder *= 10.0;
     toPrint = (unsigned int)(remainder);
     n += printNumber(writefunc,toPrint,10);
-    remainder -= toPrint; 
-  } 
-  
+    remainder -= toPrint;
+  }
+
   return n;
 }
 
+// <--#SPLIT#--> //
 
 size_t Print_println_fd(writefunc_p writefunc, double number, uint8_t digits)
 {

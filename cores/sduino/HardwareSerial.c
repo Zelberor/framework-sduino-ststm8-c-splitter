@@ -186,8 +186,6 @@ void UARTx_RX_IRQHandler(void) __interrupt(ITC_IRQ_UARTx_RX) /* UART1/2 RX */
 	};
 }
 
-// <--#SPLIT#--> //
-
 void UARTx_TX_IRQHandler(void) __interrupt(ITC_IRQ_UARTx_TX) /* UART1/2 TX */
 {
 #ifdef USE_SPL

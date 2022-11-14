@@ -10,16 +10,16 @@
  modify it under the terms of the GNU Lesser General Public
  License as published by the Free Software Foundation; either
  version 2.1 of the License, or (at your option) any later version.
- 
+
  This library is distributed in the hope that it will be useful,
  but WITHOUT ANY WARRANTY; without even the implied warranty of
  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  Lesser General Public License for more details.
- 
+
  You should have received a copy of the GNU Lesser General Public
  License along with this library; if not, write to the Free Software
  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
- 
+
  Modified 23 November 2006 by David A. Mellis
  Modified 03 August 2015 by Chuck Todd
  Modified 30 December 2016 by Michael Mayer
@@ -49,6 +49,8 @@ void printNL(void);
 
 // Public Methods //////////////////////////////////////////////////////////////
 
+// <--#SPLIT#--> //
+
 size_t Print_print_sn(writefunc_p writefunc, const uint8_t *buffer, size_t size)
 {
   size_t n = 0;
@@ -73,11 +75,14 @@ size_t Print_print_s(writefunc_p writefunc, const char *str)
 	return n;
 }
 
+// <--#SPLIT#--> //
 
 size_t Print_print_u(writefunc_p writefunc, unsigned long n)
 {
 	return printNumber(writefunc, n,10);
 }
+
+// <--#SPLIT#--> //
 
 size_t Print_print_i(writefunc_p writefunc, long n)
 {
@@ -85,6 +90,8 @@ size_t Print_print_i(writefunc_p writefunc, long n)
 }
 
 // Variants of the above functions with an added newline //////////////////////
+
+// <--#SPLIT#--> //
 
 size_t Print_println_sn(writefunc_p writefunc, const uint8_t *buffer, size_t size)
 {
@@ -94,6 +101,8 @@ size_t Print_println_sn(writefunc_p writefunc, const uint8_t *buffer, size_t siz
 	return r + Print_println(writefunc);
 }
 
+// <--#SPLIT#--> //
+
 size_t Print_println_s(writefunc_p writefunc, const char *str)
 {
 	size_t r;
@@ -101,6 +110,8 @@ size_t Print_println_s(writefunc_p writefunc, const char *str)
 	r = Print_print_s(writefunc, str);
 	return r + Print_println(writefunc);
 }
+
+// <--#SPLIT#--> //
 
 size_t Print_println_u(writefunc_p writefunc, unsigned long n)
 {
@@ -110,6 +121,8 @@ size_t Print_println_u(writefunc_p writefunc, unsigned long n)
 	return r + Print_println(writefunc);
 }
 
+// <--#SPLIT#--> //
+
 size_t Print_println_i(writefunc_p writefunc, long n)
 {
 	size_t r;
@@ -118,6 +131,8 @@ size_t Print_println_i(writefunc_p writefunc, long n)
 	return r + Print_println(writefunc);
 }
 
+// <--#SPLIT#--> //
+
 size_t Print_println_ub(writefunc_p writefunc, unsigned long n, uint8_t base)
 {
 	size_t r;
@@ -125,6 +140,8 @@ size_t Print_println_ub(writefunc_p writefunc, unsigned long n, uint8_t base)
 	r = printNumber(writefunc, n,base);
 	return r + Print_println(writefunc);
 }
+
+// <--#SPLIT#--> //
 
 size_t Print_println_ib(writefunc_p writefunc, long n, uint8_t base)
 {
@@ -138,6 +155,8 @@ size_t Print_println_ib(writefunc_p writefunc, long n, uint8_t base)
 
 // (not so) Private Methods /////////////////////////////////////////////////////////////
 
+// <--#SPLIT#--> //
+
 size_t Print_println(writefunc_p writefunc)
 {
 	size_t n;
@@ -147,6 +166,7 @@ size_t Print_println(writefunc_p writefunc)
 	return n;
 }
 
+// <--#SPLIT#--> //
 
 size_t Print_print_ub(writefunc_p writefunc, unsigned long n, uint8_t base)
 {
@@ -167,6 +187,8 @@ size_t Print_print_ub(writefunc_p writefunc, unsigned long n, uint8_t base)
 
   return Print_print_s(writefunc, str);
 }
+
+// <--#SPLIT#--> //
 
 size_t Print_print_ib(writefunc_p writefunc, long n, uint8_t base)
 {
