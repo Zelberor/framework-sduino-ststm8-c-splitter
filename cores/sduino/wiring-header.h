@@ -74,3 +74,5 @@
 
 extern volatile unsigned long timer4_overflow_count;// = 0;
 extern volatile unsigned long timer4_millis;// = 0;
+
+void _millis_irq();

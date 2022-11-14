@@ -4,9 +4,7 @@ volatile unsigned long timer4_overflow_count;// = 0;
 volatile unsigned long timer4_millis;// = 0;
 static unsigned char timer4_fract;// = 0;
 
-//void TIM4_UPD_OVF_IRQHandler(void) __interrupt(ITC_IRQ_TIM4_OVF) /* TIM4 UPD/OVF */
-//void TIM4_UPD_OVF_IRQHandler(void) __interrupt(5)//FIXME
-INTERRUPT_HANDLER(TIM4_UPD_OVF_IRQHandler, ITC_IRQ_TIM4_OVF) /* TIM4 UPD/OVF */
+void _millis_irq()
 {
 	// copy these to local variables so they can be stored in registers
 	// (volatile variables must be read from memory on every access)

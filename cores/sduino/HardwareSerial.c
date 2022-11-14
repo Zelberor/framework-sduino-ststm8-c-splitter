@@ -133,17 +133,7 @@ extern unsigned char initialized;  //=0 internal status. Returned on HardwareSer
  * Add a "-DNO_SERIAL" to the CPPFLAGS or CFLAGS to full remove this code.
  */
 
-#ifdef NO_SERIAL
-/*
- * empty default IRQ functions to make the linker happy if the
- * respective module is not to linked.
- */
-
-void UARTx_RX_IRQHandler(void) __interrupt(ITC_IRQ_UARTx_RX) {}
-void UARTx_TX_IRQHandler(void) __interrupt(ITC_IRQ_UARTx_TX) {}
-
-#else // ifdef NO_SERIAL
-
+#ifndef NO_SERIAL
 // private data //////////////////////////////////////////////////////////////
 
 // These variables should be static, but that doesn't go together with
@@ -176,7 +166,7 @@ static void store_char(unsigned char c, ring_buffer *buffer)
 
 // Interrupt handler ///////////////////////////////////////////////////////////
 
-void UARTx_RX_IRQHandler(void) __interrupt(ITC_IRQ_UARTx_RX) /* UART1/2 RX */
+void uart_rx_irq() /* UART1/2 RX */
 {
 	unsigned char c;
 
@@ -196,7 +186,7 @@ void UARTx_RX_IRQHandler(void) __interrupt(ITC_IRQ_UARTx_RX) /* UART1/2 RX */
 	};
 }
 
-void UARTx_TX_IRQHandler(void) __interrupt(ITC_IRQ_UARTx_TX) /* UART1/2 TX */
+void uart_tx_irq() /* UART1/2 TX */
 {
 #ifdef USE_SPL
 	if (tx_buffer.head == tx_buffer.tail)
@@ -230,7 +220,7 @@ void UARTx_TX_IRQHandler(void) __interrupt(ITC_IRQ_UARTx_TX) /* UART1/2 TX */
 	}
 #endif
 }
-#endif // ifdef NO_SERIAL
+#endif // ifndef NO_SERIAL
 
 // <--#SPLIT#--> //
 

@@ -31,6 +31,11 @@
 #include <stdlib.h>
 #include <Print.h>
 
+#ifndef NO_SERIAL
+void uart_rx_irq();
+void uart_tx_irq();
+#endif // ifndef NO_SERIAL
+
 // Define config for Serial.begin(baud, config);
 /* coding of the bit field: 00sw .pp.
  * wordlength w: 0:8 1:9 (5,6,7 not supported)

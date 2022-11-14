@@ -25,15 +25,12 @@
   Modified 2 February 2017 for use with sduino/STM8 by Michael Mayer
 */
 
-//#include <inttypes.h>
-//#include <stdio.h>
-
 #include "wiring_private.h"
 
 static void nothing(void) {
 }
 
-static volatile voidFuncPtr intFunc[EXTERNAL_NUM_INTERRUPTS] = {
+volatile voidFuncPtr intFunc[EXTERNAL_NUM_INTERRUPTS] = {
 #if EXTERNAL_NUM_INTERRUPTS > 9
     #warning There are more than 9 external interrupts. Some callbacks may not be initialized.
     nothing,
@@ -75,7 +72,6 @@ static volatile voidFuncPtr intFunc[EXTERNAL_NUM_INTERRUPTS] = {
 #else
 # define USE_PORT_E 1
 #endif
-
 
 void attachInterrupt(uint8_t pin, void (*userFunc)(void), int mode)
 {
@@ -141,61 +137,22 @@ void detachInterrupt(uint8_t pin)
   }
 }
 
+// --> ISR definitions moved to stm8s_it.c
 /*
-###
-  // unsigned, to make sure that (NOT_A_PORT-1) wraps over to 255
-  uint8_t interruptNum = digitalPinToPort(pin)-1;
-
-  // this catches NOT_A_PORT as well, because it wrapped over to 255
-  if(interruptNum < EXTERNAL_NUM_INTERRUPTS) {
-    // Disable the PC interrupt for the pin.
-    GPIOx->CR2 &= ~digitalPinToBitMask(pin);
-
-    if ((GPIOx->CR2 & ~GPIOx->DDR)==0) {
-      // no other PC interrupt active for this port, disable the IRQ function
-      intFunc[interruptNum] = nothing;
-    }
-}
-*/
-
-
-/*
-void attachInterruptTwi(void (*userFunc)(void) ) {
-  twiIntFunc = userFunc;
-}
-*/
-
 // define as __naked to avoid the nonsense "clr a/dix x,a" prolog
 #define IMPLEMENT_ISR(vect, interrupt) \
  void vect(void) __interrupt((interrupt)>>8) __naked { \
     intFunc[(interrupt)&0xff](); \
     __asm__("iret"); \
   }
-/* would be great, but need to evaluate the #defines first
-#define IMPLEMENT_ISR(vect, interrupt) \
- void vect(void) __interrupt((interrupt) & 0xff) __naked { \
-   __asm \
-    call	[_intFunc+2*(interrupt)] \
-    iret \
-    __endasm; \
-  }
-*/
 
-IMPLEMENT_ISR(EXTI_PORTA_IRQHandler,		INT_PORTA) /* EXTI PORTA */
-IMPLEMENT_ISR(EXTI_PORTB_IRQHandler,		INT_PORTB) /* EXTI PORTB */
-IMPLEMENT_ISR(EXTI_PORTC_IRQHandler,		INT_PORTC) /* EXTI PORTC */
-IMPLEMENT_ISR(EXTI_PORTD_IRQHandler,		INT_PORTD) /* EXTI PORTD */
-IMPLEMENT_ISR(EXTI_PORTE_IRQHandler,		INT_PORTE) /* EXTI PORTE */
+IMPLEMENT_ISR(EXTI_PORTA_IRQHandler,		INT_PORTA) // EXTI PORTA
+IMPLEMENT_ISR(EXTI_PORTB_IRQHandler,		INT_PORTB) // EXTI PORTB
+IMPLEMENT_ISR(EXTI_PORTC_IRQHandler,		INT_PORTC) // EXTI PORTC
+IMPLEMENT_ISR(EXTI_PORTD_IRQHandler,		INT_PORTD) // EXTI PORTD
+IMPLEMENT_ISR(EXTI_PORTE_IRQHandler,		INT_PORTE) // EXTI PORTE
 IMPLEMENT_ISR(TIM1_CAP_COM_IRQHandler,		INT_TIM1_CAPCOM)
-//IMPLEMENT_ISR(TIM1_UPD_OVF_TRG_BRK_IRQHandler,	INT_TIM1_OVF)
-//IMPLEMENT_ISR(TIM2_CAP_COM_IRQHandler,		INT_TIM2_CAPCOM)
-//IMPLEMENT_ISR(TIM2_UPD_OVF_TRG_BRK_IRQHandler,	INT_TIM2_OVF)
-
-
-/*
-ISR(TWI_vect) {
-  if(twiIntFunc)
-    twiIntFunc();
-}
+IMPLEMENT_ISR(TIM1_UPD_OVF_TRG_BRK_IRQHandler,	INT_TIM1_OVF)
+IMPLEMENT_ISR(TIM2_CAP_COM_IRQHandler,		INT_TIM2_CAPCOM)
+IMPLEMENT_ISR(TIM2_UPD_OVF_TRG_BRK_IRQHandler,	INT_TIM2_OVF)
 */
-
