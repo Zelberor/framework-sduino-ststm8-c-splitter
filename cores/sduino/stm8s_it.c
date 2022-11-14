@@ -70,7 +70,6 @@ INTERRUPT_HANDLER(NonHandledInterrupt, 25)
  */
 INTERRUPT_HANDLER_TRAP(TRAP_IRQHandler)
 {
-  __asm__("nop");
 	/* In order to detect unexpected events during development,
 	   it is recommended to set a breakpoint on the following instruction.
 	*/
@@ -82,8 +81,8 @@ INTERRUPT_HANDLER_TRAP(TRAP_IRQHandler)
  * @retval None
  */
 INTERRUPT_HANDLER(TLI_IRQHandler, 0)
+
 {
-  __asm__("nop");
 	/* In order to detect unexpected events during development,
 	   it is recommended to set a breakpoint on the following instruction.
 	*/
@@ -96,7 +95,6 @@ INTERRUPT_HANDLER(TLI_IRQHandler, 0)
  */
 INTERRUPT_HANDLER(AWU_IRQHandler, 1)
 {
-  __asm__("nop");
 	/* In order to detect unexpected events during development,
 	   it is recommended to set a breakpoint on the following instruction.
 	*/
@@ -109,7 +107,6 @@ INTERRUPT_HANDLER(AWU_IRQHandler, 1)
  */
 INTERRUPT_HANDLER(CLK_IRQHandler, 2)
 {
-  __asm__("nop");
 	/* In order to detect unexpected events during development,
 	   it is recommended to set a breakpoint on the following instruction.
 	*/
@@ -173,7 +170,6 @@ INTERRUPT_HANDLER(EXTI_PORTE_IRQHandler, 7)
  */
 INTERRUPT_HANDLER(EXTI_PORTF_IRQHandler, 8)
 {
-  __asm__("nop");
 	/* In order to detect unexpected events during development,
 	   it is recommended to set a breakpoint on the following instruction.
 	*/
@@ -188,7 +184,6 @@ INTERRUPT_HANDLER(EXTI_PORTF_IRQHandler, 8)
  */
 INTERRUPT_HANDLER(CAN_RX_IRQHandler, 8)
 {
-  __asm__("nop");
 	/* In order to detect unexpected events during development,
 	   it is recommended to set a breakpoint on the following instruction.
 	*/
@@ -201,7 +196,6 @@ INTERRUPT_HANDLER(CAN_RX_IRQHandler, 8)
  */
 INTERRUPT_HANDLER(CAN_TX_IRQHandler, 9)
 {
-  __asm__("nop");
 	/* In order to detect unexpected events during development,
 	   it is recommended to set a breakpoint on the following instruction.
 	*/
@@ -215,7 +209,6 @@ INTERRUPT_HANDLER(CAN_TX_IRQHandler, 9)
  */
 INTERRUPT_HANDLER(SPI_IRQHandler, 10)
 {
-  __asm__("nop");
 	/* In order to detect unexpected events during development,
 	   it is recommended to set a breakpoint on the following instruction.
 	*/
@@ -249,7 +242,6 @@ INTERRUPT_HANDLER(TIM1_CAP_COM_IRQHandler, 12)
  */
 INTERRUPT_HANDLER(TIM5_UPD_OVF_BRK_TRG_IRQHandler, 13)
 {
-  __asm__("nop");
 	/* In order to detect unexpected events during development,
 	   it is recommended to set a breakpoint on the following instruction.
 	*/
@@ -262,7 +254,6 @@ INTERRUPT_HANDLER(TIM5_UPD_OVF_BRK_TRG_IRQHandler, 13)
  */
 INTERRUPT_HANDLER(TIM5_CAP_COM_IRQHandler, 14)
 {
-  __asm__("nop");
 	/* In order to detect unexpected events during development,
 	   it is recommended to set a breakpoint on the following instruction.
 	*/
@@ -299,7 +290,6 @@ INTERRUPT_HANDLER(TIM2_CAP_COM_IRQHandler, 14)
  */
 INTERRUPT_HANDLER(TIM3_UPD_OVF_BRK_IRQHandler, 15)
 {
-  __asm__("nop");
 	/* In order to detect unexpected events during development,
 	   it is recommended to set a breakpoint on the following instruction.
 	*/
@@ -312,7 +302,6 @@ INTERRUPT_HANDLER(TIM3_UPD_OVF_BRK_IRQHandler, 15)
  */
 INTERRUPT_HANDLER(TIM3_CAP_COM_IRQHandler, 16)
 {
-  __asm__("nop");
 	/* In order to detect unexpected events during development,
 	   it is recommended to set a breakpoint on the following instruction.
 	*/
@@ -358,7 +347,6 @@ INTERRUPT_HANDLER(UART1_RX_IRQHandler, 18)
  */
 INTERRUPT_HANDLER(UART4_TX_IRQHandler, 17)
 {
-  __asm__("nop");
 	/* In order to detect unexpected events during development,
 	   it is recommended to set a breakpoint on the following instruction.
 	*/
@@ -371,7 +359,6 @@ INTERRUPT_HANDLER(UART4_TX_IRQHandler, 17)
  */
 INTERRUPT_HANDLER(UART4_RX_IRQHandler, 18)
 {
-  __asm__("nop");
 	/* In order to detect unexpected events during development,
 	   it is recommended to set a breakpoint on the following instruction.
 	*/
@@ -385,7 +372,6 @@ INTERRUPT_HANDLER(UART4_RX_IRQHandler, 18)
  */
 INTERRUPT_HANDLER(I2C_IRQHandler, 19)
 {
-  __asm__("nop");
 	/* In order to detect unexpected events during development,
 	   it is recommended to set a breakpoint on the following instruction.
 	*/
@@ -429,7 +415,6 @@ INTERRUPT_HANDLER(UART2_RX_IRQHandler, 21)
  */
 INTERRUPT_HANDLER(UART3_TX_IRQHandler, 20)
 {
-  __asm__("nop");
 	/* In order to detect unexpected events during development,
 	   it is recommended to set a breakpoint on the following instruction.
 	*/
@@ -442,7 +427,6 @@ INTERRUPT_HANDLER(UART3_TX_IRQHandler, 20)
  */
 INTERRUPT_HANDLER(UART3_RX_IRQHandler, 21)
 {
-  __asm__("nop");
 	/* In order to detect unexpected events during development,
 	   it is recommended to set a breakpoint on the following instruction.
 	*/
@@ -457,7 +441,6 @@ INTERRUPT_HANDLER(UART3_RX_IRQHandler, 21)
  */
 INTERRUPT_HANDLER(ADC2_IRQHandler, 22)
 {
-  __asm__("nop");
 	/* In order to detect unexpected events during development,
 	   it is recommended to set a breakpoint on the following instruction.
 	*/
@@ -472,7 +455,6 @@ INTERRUPT_HANDLER(ADC2_IRQHandler, 22)
  */
 INTERRUPT_HANDLER(ADC1_IRQHandler, 22)
 {
-  __asm__("nop");
 	/* In order to detect unexpected events during development,
 	   it is recommended to set a breakpoint on the following instruction.
 	*/
@@ -508,7 +490,6 @@ INTERRUPT_HANDLER(TIM4_UPD_OVF_IRQHandler, 23)
  */
 INTERRUPT_HANDLER(EEPROM_EEC_IRQHandler, 24)
 {
-  __asm__("nop");
 	/* In order to detect unexpected events during development,
 	   it is recommended to set a breakpoint on the following instruction.
 	*/
