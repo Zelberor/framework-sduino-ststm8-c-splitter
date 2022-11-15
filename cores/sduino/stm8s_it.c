@@ -81,7 +81,6 @@ INTERRUPT_HANDLER_TRAP(TRAP_IRQHandler)
  * @retval None
  */
 INTERRUPT_HANDLER(TLI_IRQHandler, 0)
-
 {
 	/* In order to detect unexpected events during development,
 	   it is recommended to set a breakpoint on the following instruction.
@@ -95,9 +94,10 @@ INTERRUPT_HANDLER(TLI_IRQHandler, 0)
  */
 INTERRUPT_HANDLER(AWU_IRQHandler, 1)
 {
-	/* In order to detect unexpected events during development,
-	   it is recommended to set a breakpoint on the following instruction.
-	*/
+#ifndef NO_AWU
+  /* Clear AWU peripheral pending bit */
+  AWU_GetFlagStatus();
+#endif // ifndef NO_AWU
 }
 
 /**
