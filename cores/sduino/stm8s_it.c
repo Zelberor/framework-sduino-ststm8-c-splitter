@@ -30,9 +30,10 @@
 /* Includes ------------------------------------------------------------------*/
 #include "stm8s_it.h"
 #include "Arduino.h"
-#include "WInterrupts.h"
-#include "wiring-header.h"
-#include "HardwareSerial.h"
+#include "WInterrupts_private.h"
+#include "wiring_private.h"
+#include "HardwareSerial_private.h"
+#include "awu_private.h"
 
 /** @addtogroup Template_Project
  * @{
@@ -95,8 +96,7 @@ INTERRUPT_HANDLER(TLI_IRQHandler, 0)
 INTERRUPT_HANDLER(AWU_IRQHandler, 1)
 {
 #ifndef NO_AWU
-  /* Clear AWU peripheral pending bit */
-  AWU_GetFlagStatus();
+  awu_irq();
 #endif // ifndef NO_AWU
 }
 

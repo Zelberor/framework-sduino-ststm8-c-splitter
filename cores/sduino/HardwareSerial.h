@@ -18,7 +18,7 @@
   You should have received a copy of the GNU Lesser General Public
   License along with this library; if not, write to the Free Software
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
-  
+
   Modified 23 November 2006 by David A. Mellis
   Modified 28 September 2010 by Mark Sproul
   Modified 14 August 2012 by Alarus
@@ -30,11 +30,6 @@
 
 #include <stdlib.h>
 #include <Print.h>
-
-#ifndef NO_SERIAL
-void uart_rx_irq();
-void uart_tx_irq();
-#endif // ifndef NO_SERIAL
 
 // Define config for Serial.begin(baud, config);
 /* coding of the bit field: 00sw .pp.
